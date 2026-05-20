@@ -18,6 +18,7 @@
 			--bg3:       #1a1a24;
 			--border:    rgba(255,255,255,0.07);
 			--text:      #e8e8f0;
+			--heading:   #ffffff;
 			--muted:     #8888aa;
 			--accent:    #7c6ef5;
 			--accent2:   #00c9a7;
@@ -27,17 +28,18 @@
 		}
 
 		:root.light {
-			--bg:        #f5f5f7;
-			--bg2:       #ffffff;
-			--bg3:       #eeeef2;
-			--border:    rgba(0,0,0,0.08);
-			--text:      #1a1a2e;
-			--muted:     #6b6b8a;
+			--bg:        #eef0f5;
+			--bg2:       #e6e8f0;
+			--bg3:       #dddfe8;
+			--border:    rgba(0,0,0,0.1);
+			--text:      #2a2a3e;
+			--heading:   #111128;
+			--muted:     #5a5a78;
 			--accent:    #6356e0;
 			--accent2:   #00a888;
 			--grad:      linear-gradient(135deg, #6356e0 0%, #a356e0 100%);
 			--grad2:     linear-gradient(135deg, #00a888 0%, #0088cc 100%);
-			--nav-bg:    rgba(245, 245, 247, 0.82);
+			--nav-bg:    rgba(238, 240, 245, 0.88);
 		}
 
 		html { scroll-behavior: smooth; }
@@ -231,7 +233,7 @@
 			font-weight: 800;
 			line-height: 1.1;
 			letter-spacing: -0.03em;
-			color: #fff;
+			color: var(--heading);
 			margin-bottom: 20px;
 		}
 
@@ -330,7 +332,7 @@
 			font-size: clamp(1.8rem, 3.5vw, 2.6rem);
 			font-weight: 800;
 			letter-spacing: -0.025em;
-			color: #fff;
+			color: var(--heading);
 			margin-bottom: 14px;
 		}
 
@@ -382,7 +384,7 @@
 			font-family: 'Plus Jakarta Sans', sans-serif;
 			font-size: 1.05rem;
 			font-weight: 700;
-			color: #fff;
+			color: var(--heading);
 			margin-bottom: 10px;
 		}
 
@@ -478,7 +480,7 @@
 			font-family: 'Plus Jakarta Sans', sans-serif;
 			font-size: 1.15rem;
 			font-weight: 700;
-			color: #fff;
+			color: var(--heading);
 			margin-bottom: 10px;
 		}
 
@@ -520,7 +522,7 @@
 			font-family: 'Plus Jakarta Sans', sans-serif;
 			font-size: 1.3rem;
 			font-weight: 700;
-			color: #fff;
+			color: var(--heading);
 			margin-bottom: 12px;
 		}
 
