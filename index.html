@@ -4,6 +4,7 @@
 	<title>Baris Guzelsoy — Software Engineer</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
 	<link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +23,21 @@
 			--accent2:   #00c9a7;
 			--grad:      linear-gradient(135deg, #7c6ef5 0%, #c17ef5 100%);
 			--grad2:     linear-gradient(135deg, #00c9a7 0%, #00a3ff 100%);
+			--nav-bg:    rgba(11, 11, 15, 0.75);
+		}
+
+		:root.light {
+			--bg:        #f5f5f7;
+			--bg2:       #ffffff;
+			--bg3:       #eeeef2;
+			--border:    rgba(0,0,0,0.08);
+			--text:      #1a1a2e;
+			--muted:     #6b6b8a;
+			--accent:    #6356e0;
+			--accent2:   #00a888;
+			--grad:      linear-gradient(135deg, #6356e0 0%, #a356e0 100%);
+			--grad2:     linear-gradient(135deg, #00a888 0%, #0088cc 100%);
+			--nav-bg:    rgba(245, 245, 247, 0.82);
 		}
 
 		html { scroll-behavior: smooth; }
@@ -43,10 +59,39 @@
 			justify-content: center;
 			align-items: center;
 			height: 64px;
-			background: rgba(11, 11, 15, 0.75);
+			background: var(--nav-bg);
 			backdrop-filter: blur(20px);
 			-webkit-backdrop-filter: blur(20px);
 			border-bottom: 1px solid var(--border);
+			transition: background 0.3s;
+		}
+
+		#nav .nav-inner {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+		}
+
+		#theme-toggle {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 34px;
+			height: 34px;
+			border-radius: 999px;
+			border: 1px solid var(--border);
+			background: transparent;
+			color: var(--muted);
+			font-size: 0.85rem;
+			cursor: pointer;
+			transition: color 0.2s, background 0.2s, border-color 0.2s;
+			margin-left: 8px;
+		}
+
+		#theme-toggle:hover {
+			color: var(--text);
+			background: rgba(124,110,245,0.1);
+			border-color: var(--accent);
 		}
 
 		#nav ul {
@@ -645,12 +690,17 @@
 
 	<!-- NAV -->
 	<nav id="nav">
-		<ul>
-			<li><a href="#top">Home</a></li>
-			<li><a href="#work">Skills</a></li>
-			<li><a href="#portfolio">Projects</a></li>
-			<li><a href="#contact">Contact</a></li>
-		</ul>
+		<div class="nav-inner">
+			<ul>
+				<li><a href="#top">Home</a></li>
+				<li><a href="#work">Skills</a></li>
+				<li><a href="#portfolio">Projects</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+			<button id="theme-toggle" aria-label="Toggle light/dark mode">
+				<i class="fas fa-moon"></i>
+			</button>
+		</div>
 	</nav>
 
 	<!-- HERO -->
@@ -664,7 +714,7 @@
 			<div class="hero-text">
 				<div class="hero-badge">Available for opportunities</div>
 				<h1>Hi, I'm <span class="gradient-text">Baris</span><br>Software Engineer</h1>
-				<p>Full-stack developer with experience at Google and Jefferies. I build clean, scalable software — from backend systems to mobile apps.</p>
+				<p>Full-stack developer with experience at Google and Jefferies. I build clean, scalable software, from backend systems to mobile apps.</p>
 				<div class="hero-ctas">
 					<a href="#portfolio" class="btn-primary">
 						<i class="fas fa-code"></i> View Projects
@@ -825,6 +875,22 @@
 	</footer>
 
 	<script>
+		// Theme toggle
+		const toggle = document.getElementById('theme-toggle');
+		const icon = toggle.querySelector('i');
+		const saved = localStorage.getItem('theme');
+
+		if (saved === 'light') {
+			document.documentElement.classList.add('light');
+			icon.className = 'fas fa-sun';
+		}
+
+		toggle.addEventListener('click', () => {
+			const isLight = document.documentElement.classList.toggle('light');
+			icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+			localStorage.setItem('theme', isLight ? 'light' : 'dark');
+		});
+
 		// Active nav link on scroll
 		const sections = document.querySelectorAll('section[id], #contact');
 		const navLinks = document.querySelectorAll('#nav a');
